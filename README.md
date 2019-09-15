@@ -2,7 +2,7 @@
 
 A Flask API URL shortener.
 
-## Getting Started - locally
+## Getting Started 
 
 Install Docker and Docker-compose if you don't have it installed (https://docs.docker.com/compose/install/) and clone the repository:
 ```
