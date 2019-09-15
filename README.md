@@ -31,7 +31,7 @@ To shorten a URL send a POST request to http://127.0.0.1:5000/register with a "u
 }
 ```
 
-To view url statistics for an account send a GET request to http://127.0.0.1:5000/statistics/<account_id:int>/ (Basic authentication required):
+To view url statistics for an account, send a GET request to http://127.0.0.1:5000/statistics/{account_id}/ (Basic authentication required):
 
 ## Shutting down the API
 
