@@ -90,7 +90,7 @@ def stats(account_id):
     for link in links:
         link_dict[link.original_url] = link.visits
 
-    return link_dict
+    return link_dict, 200
 
 
 @short.route('/<short_url>')
