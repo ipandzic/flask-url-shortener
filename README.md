@@ -16,14 +16,14 @@ docker-compose up -d
 
 ## Using the API
 
-To create a new account send a POST request to http://127.0.0.1:5000/account with an "account_id" parameter: 
+To create a new account, send a POST request to http://127.0.0.1:5000/account with an "account_id" parameter: 
 ```
 {
-	"account_id": "Ivan"
+	"account_id": "User"
 }
 ```
 
-To shorten an URL send a POST request to http://127.0.0.1:5000/register with a "url" parameter (Basic authentication required): 
+To shorten a URL send a POST request to http://127.0.0.1:5000/register with a "url" parameter (Basic authentication required): 
 ```
 {
 	"url": "https://www.vecernji.hr/",
