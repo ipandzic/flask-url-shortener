@@ -2,7 +2,7 @@ import string
 from datetime import datetime
 from random import choices
 
-from .extensions import db 
+from .extensions import db
 
 
 class Account(db.Model):

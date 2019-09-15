@@ -1,5 +1,5 @@
-from flask_marshmallow import Marshmallow 
 from flask import Blueprint
+from flask_marshmallow import Marshmallow
 
 short = Blueprint('short', __name__)
 ma = Marshmallow(short)

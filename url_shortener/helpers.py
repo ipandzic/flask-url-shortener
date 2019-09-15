@@ -1,9 +1,11 @@
 import random
 import string
+
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from .models import Account, Link
 from .schemas import account_schema, accounts_schema, link_schema, links_schema
-from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = HTTPBasicAuth()
 
