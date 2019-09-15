@@ -9,7 +9,7 @@ Install Docker and Docker-compose if you don't have it installed (https://docs.d
 git clone https://github.com/ipandzic/flask-url-shortener.git
 ```
 
-Start the API on port 5000 by running "make start" or:
+Cd into the flask-url-shortener folder and start the API on port 5000 by running "make start" or:
 ```
 docker-compose up -d
 ```
