@@ -1,45 +1,12 @@
 from flask import Blueprint, request, redirect
-from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_marshmallow import Marshmallow 
-
-from flasgger import Swagger
 
 from .extensions import db
-from .helpers import randomString
+from .helpers import auth, randomString, verify_password
 from .models import Account, Link
+from .schemas import account_schema, accounts_schema, link_schema, links_schema
 
 short = Blueprint('short', __name__)
-ma = Marshmallow(short)
-auth = HTTPBasicAuth()
-
-# Account Schema
-class AccountSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'account_id', 'password')
-
-account_schema = AccountSchema()
-accounts_schema = AccountSchema(many=True)
-
-# Link Schema
-class LinkSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'original_url', 'short_url', 'redirect_type', 'visits', 'account')
-
-link_schema = LinkSchema()
-links_schema = LinkSchema(many=True)
-
-@auth.verify_password
-def verify_password(account_id, password):
-
-    all_accounts = Account.query.all()
-    account_dicts = accounts_schema.dump(all_accounts)
-
-    for item in account_dicts:
-        if item["account_id"] == account_id:
-            account = Account.query.filter(Account.account_id == account_id).first()
-            return check_password_hash(account.password, password)
-    return False
 
 @short.route('/account', methods=['POST'])
 def add_user():
