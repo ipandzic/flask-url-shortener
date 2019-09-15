@@ -1,0 +1,3 @@
+POSTGRES_USER=shortener_user
+POSTGRES_PASSWORD=shortener_pass
+POSTGRES_DB=shortener_db

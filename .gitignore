@@ -1,0 +1,20 @@
+.DS_Store
+.vscode
+__pycache__/
+*.py[cod]
+dist/
+build/
+*.egg
+*.egg-info/
+_mailinglist
+.tox/
+.cache/
+.pytest_cache/
+.idea/
+docs/_build/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+*,cover

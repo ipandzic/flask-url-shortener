@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  backend:
+    container_name: shortener_backend
+    build: .
+    restart: always
+    networks:
+      - dev_network
+    ports:
+      - "5000:5000"
+    command: ["sh", "./entrypoints/dev.sh"]
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+
+  db:
+    container_name: shortener_db
+    image: postgres:10
+    env_file:
+      - config/db/dev_env
+    expose:
+      - 5432
+    volumes:
+      - dev_volume:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    networks:
+      - dev_network
+
+networks:
+  dev_network:
+    driver: bridge
+
+volumes:
+  dev_volume:
