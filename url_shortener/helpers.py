@@ -2,12 +2,13 @@ import random
 import string
 
 from flask_httpauth import HTTPBasicAuth
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
-from .models import Account, Link
-from .schemas import account_schema, accounts_schema, link_schema, links_schema
+from .models import Account
+from .schemas import accounts_schema
 
 auth = HTTPBasicAuth()
+
 
 @auth.verify_password
 def verify_password(account_id, password):
@@ -20,6 +21,7 @@ def verify_password(account_id, password):
             account = Account.query.filter(Account.account_id == account_id).first()
             return check_password_hash(account.password, password)
     return False
+
 
 def randomString(stringLength=8):
     """Generate a random string of fixed length """

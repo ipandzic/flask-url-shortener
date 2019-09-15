@@ -1,11 +1,13 @@
 from flask import Blueprint, redirect, request
+from werkzeug.security import generate_password_hash
 
 from .extensions import db
-from .helpers import auth, randomString, verify_password
+from .helpers import auth, randomString
 from .models import Account, Link
-from .schemas import account_schema, accounts_schema, link_schema, links_schema
+from .schemas import accounts_schema, links_schema
 
 short = Blueprint('short', __name__)
+
 
 @short.route('/account', methods=['POST'])
 def add_user():
@@ -27,7 +29,6 @@ def add_user():
                 "success": False,
                 "description": "Account_id already exists."
             }, 400
-
 
     password = generate_password_hash(new_password)
 
@@ -55,7 +56,7 @@ def add_link():
         redirect_type = request.json['redirect_type']
     except KeyError:
         redirect_type = 302
-    
+
     all_links = Link.query.all()
     link_dicts = links_schema.dump(all_links)
 
@@ -65,19 +66,25 @@ def add_link():
 
     auth = request.authorization
     if auth:
-        account = Account.query.filter_by(account_id=auth.username).first_or_404()
+        account = Account.query.filter_by(
+            account_id=auth.username).first_or_404()
 
-    link = Link(original_url=original_url, account_id=account.id, redirect_type=redirect_type)
-    db.session.add(link) 
+    link = Link(
+        original_url=original_url,
+        account_id=account.id,
+        redirect_type=redirect_type
+        )
+    db.session.add(link)
     db.session.commit()
 
     return {"short_url": "http://localhost:5000/" + link.short_url}, 201
+
 
 @short.route('/statistic/<account_id>', methods=['GET'])
 def stats(account_id):
     account = Account.query.filter_by(id=account_id).first_or_404()
 
-    links = Link.query.filter_by(account_id=account_id) 
+    links = Link.query.filter_by(account_id=account_id)
     link_dict = {}
 
     for link in links:
@@ -85,11 +92,12 @@ def stats(account_id):
 
     return link_dict
 
+
 @short.route('/<short_url>')
 @auth.login_required
 def redirect_to_url(short_url):
     link = Link.query.filter_by(short_url=short_url).first_or_404()
-    link.visits += 1 
+    link.visits += 1
     db.session.commit()
 
     return redirect(link.original_url, code=link.redirect_type)

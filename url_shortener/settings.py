@@ -11,7 +11,8 @@ SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{
         passwd=DBPASS,
         host=DBHOST,
         port=DBPORT,
-        db=DBNAME)
+        db=DBNAME
+        )
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME')

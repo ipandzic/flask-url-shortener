@@ -1,5 +1,4 @@
 import string
-from datetime import datetime
 from random import choices
 
 from .extensions import db
@@ -13,6 +12,7 @@ class Account(db.Model):
     def __init__(self, account_id, password):
         self.account_id = account_id
         self.password = password
+
 
 class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,5 +34,5 @@ class Link(db.Model):
 
         if link:
             return self.generate_short_link()
-        
+
         return short_url
