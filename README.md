@@ -9,10 +9,9 @@ Install Docker and Docker-compose if you don't have them installed (https://docs
 git clone https://github.com/ipandzic/flask-url-shortener.git
 ```
 
-Cd into the flask-url-shortener folder and start the API on port 5000 by running "make start" or:
+Cd into the flask-url-shortener folder and start the API on port 5000 by running:
 ```
-docker-compose up -d --build
-docker-compose restart backend
+make start
 ```
 
 ## Using the API
@@ -36,13 +35,12 @@ To view url statistics for an account, send a GET request to http://127.0.0.1:50
 
 ## Shutting down the API
 
-To shut down the API use "make stop" or:
+To shut down the API use:
 ```
-docker-compose down
+make stop
 ```
 
-To shut down the API and delete the database use "make clean" or:
+To shut down the API and delete the database use:
 ```
-docker-compose down
-docker volume rm shortener_dev_volume
+make clean
 ```
