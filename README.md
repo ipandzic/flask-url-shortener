@@ -23,7 +23,7 @@ To create a new account, send a POST request to http://127.0.0.1:5000/account wi
 }
 ```
 
-To shorten a URL send a POST request to http://127.0.0.1:5000/register with a "url" parameter (Basic authentication required): 
+To shorten a URL send a POST request to http://127.0.0.1:5000/register with a "url" parameter, and an optional "redirect_type" parameter (Basic authentication required): 
 ```
 {
 	"url": "https://www.vecernji.hr/",
