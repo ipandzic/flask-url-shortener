@@ -4,7 +4,7 @@ A Flask API URL shortener.
 
 ## Getting Started 
 
-Install Docker and Docker-compose if you don't have it installed (https://docs.docker.com/compose/install/) and clone the repository:
+Install Docker and Docker-compose if you don't have them installed (https://docs.docker.com/compose/install/) and clone the repository:
 ```
 git clone https://github.com/ipandzic/flask-url-shortener.git
 ```
