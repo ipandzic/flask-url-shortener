@@ -45,5 +45,4 @@ To shut down the API and delete the database use "make clean" or:
 ```
 docker-compose down
 docker volume rm shortener_dev_volume
-docker volume ls
 ```
