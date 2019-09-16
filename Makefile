@@ -22,7 +22,7 @@ status:
 	docker ps -a
 
 clean: stop
-	docker volume rm shortener_dev_volume
+	docker volume rm flask-url-shortener_dev_volume
 	docker volume ls
 
 exec-backend:
