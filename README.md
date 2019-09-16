@@ -11,7 +11,8 @@ git clone https://github.com/ipandzic/flask-url-shortener.git
 
 Cd into the flask-url-shortener folder and start the API on port 5000 by running "make start" or:
 ```
-docker-compose up -d
+docker-compose up -d --build
+docker-compose restart backend
 ```
 
 ## Using the API
